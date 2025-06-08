@@ -54,21 +54,21 @@ class Post(models.Model):
         return f"HollaMe {self.post_type} - \"{self.content[:30]} ...\" - {self.author.username}"
 
 class PostUserTag(models.Model):
-    post = models.ForeignKey(post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     tagged_on = models.DateTimeField(auto_now_add=True)
 
 class PostLike(models.Model):
-    post = models.ForeignKey(post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     liked_on = models.DateTimeField(auto_now_add=True)
 
 class PostShare(models.Model):
-    post = models.ForeignKey(post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     shared_on = models.DateTimeField(auto_now_add=True)
 
 class PostSeen(models.Model):
-    post = models.ForeignKey(post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     seen_on = models.DateTimeField(auto_now_add=True)
